@@ -4,7 +4,7 @@ const table = 'rooms';
 
 // constructor
 const Room = function(room) {
-    this.name = room.name;
+    this.room_id = room.room_id;
     this.building = room.building;
     this.size = room.size;
     this.type = room.type;
@@ -34,7 +34,7 @@ Room.getAll = result => {
 }
 
 Room.updateById = (id, room, result) => {
-    sql.query("UPDATE " + table +" SET name = ?, building = ?, size = ?, type = ?, status = ?, active = ? WHERE id = ?", 
+    sql.query("UPDATE " + table +" SET room_id = ?, building = ?, size = ?, type = ?, status = ?, active = ? WHERE id = ?", 
     [room.name, room.building, room.size, room.type, room.status, room.active, id], (err, res) => {
         if(err) throw err
         result(null, {id: id, ...room});
