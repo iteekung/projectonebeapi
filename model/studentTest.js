@@ -26,7 +26,7 @@ StudentTest.getAll = result => {
 }
 
 StudentTest.updateById = (id, studentTest, result) => {
-    sql.query("UPDATE " + table +" SET studentId = ?, check = ? WHERE id = ?", 
+    sql.query("UPDATE " + table +" SET check = ? WHERE id = ?", 
     [studentTest.studentId, studentTest.check, id], (err, res) => {
         if(err) throw err
         result(null, {id: id, ...studentTest});
