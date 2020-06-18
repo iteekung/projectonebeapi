@@ -8,6 +8,8 @@ const Student = require('./model/student.js')
 const Subject = require('./model/subject.js')
 const Teacher = require('./model/teacher.js')
 const Test = require('./model/test.js')
+const StudentTest = require('./model/studentTest')
+
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
@@ -232,6 +234,53 @@ app.put("/test/:id", (req, res) => {
 // Delete Test
 app.delete("/test/:id", (req, res) => {
     Test.remove(req.params.id, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+
+
+
+
+
+
+
+
+// StudentTest getall
+app.get("/studentTest", (req, res) => {
+    StudentTest.getAll((err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+// StudentTest find by id
+app.get("/studentTest/:id", (req, res) => {
+    StudentTest.findById(req.params.id, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+// Create StudentTest
+app.post("/studentTest", (req, res) => {
+    const studentTest = new StudentTest(req.body)
+    StudentTest.create(studentTest, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+
+// Update StudentTest
+app.put("/studentTest/:id", (req, res) => {
+    const studentTest = new StudentTest(req.body)
+    StudentTest.updateById(req.params.id, studentTest, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+
+// Delete StudentTest
+app.delete("/studentTest/:id", (req, res) => {
+    StudentTest.remove(req.params.id, (err, data) => {
         if (err) throw err;
         res.json(data);
     })
