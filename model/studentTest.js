@@ -35,7 +35,7 @@ StudentTest.updateById = (id, studentTest, result) => {
 
 StudentTest.updateCheckin = (studentTest, result) => {
     sql.query("UPDATE " + table +" SET check = 1 WHERE studentId = ?", 
-    [studentTest.check], (err, res) => {
+    [studentTest.studentId], (err, res) => {
         if(err) throw err
         result(null, {id: id, ...studentTest});
     })
