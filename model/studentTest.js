@@ -33,8 +33,16 @@ StudentTest.getAll = result => {
 }
 
 StudentTest.updateById = (id, studentTest, result) => {
-    sql.query("UPDATE " + table +" SET studentId = ?, check = ? WHERE id = ?", 
-    [studentTest.studentId, studentTest.check, id], (err, res) => {
+    sql.query("UPDATE " + table +" SET check = ? WHERE id = ?", 
+    [studentTest.check, id], (err, res) => {
+        if(err) throw err
+        result(null, {id: id, ...studentTest});
+    })
+}
+
+StudentTest.updateCheckin = (studentTest, result) => {
+    sql.query("UPDATE " + table +" SET check = 1 WHERE studentId = ?", 
+    [studentTest.check], (err, res) => {
         if(err) throw err
         result(null, {id: id, ...studentTest});
     })

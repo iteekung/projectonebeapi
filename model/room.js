@@ -35,7 +35,7 @@ Room.getAll = result => {
 
 Room.updateById = (id, room, result) => {
     sql.query("UPDATE " + table +" SET room_id = ?, building = ?, size = ?, type = ?, status = ?, active = ? WHERE id = ?", 
-    [room.name, room.building, room.size, room.type, room.status, room.active, id], (err, res) => {
+    [room.room_id, room.building, room.size, room.type, room.status, room.active, id], (err, res) => {
         if(err) throw err
         result(null, {id: id, ...room});
     })

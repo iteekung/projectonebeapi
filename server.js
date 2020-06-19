@@ -278,6 +278,15 @@ app.put("/studentTest/:id", (req, res) => {
     })
 });
 
+// Update StudentTest Checkin
+app.put("/studentTestCheckin", (req, res) => {
+    const studentTest = new StudentTest(req.body)
+    StudentTest.updateById(studentTest, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
+
 // Delete StudentTest
 app.delete("/studentTest/:id", (req, res) => {
     StudentTest.remove(req.params.id, (err, data) => {
