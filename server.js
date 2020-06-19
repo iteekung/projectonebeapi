@@ -255,6 +255,13 @@ app.get("/studentTest", (req, res) => {
         res.json(data);
     })
 });
+// StudentTest getall by test id
+app.get("/studentTestBytestid/:id", (req, res) => {
+    StudentTest.getAllByTest(req.params.id, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+})
 // StudentTest find by id
 app.get("/studentTest/:id", (req, res) => {
     StudentTest.findById(req.params.id, (err, data) => {
