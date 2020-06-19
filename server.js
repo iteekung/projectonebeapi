@@ -89,6 +89,13 @@ app.get("/student/:id", (req, res) => {
         res.json(data);
     })
 });
+// Students find by id
+app.get("/studentbyid", (req, res) => {
+    Student.findByStudentId(req.query.student_id, (err, data) => {
+        if (err) throw err;
+        res.json(data);
+    })
+});
 // Create Student
 app.post("/student", (req, res) => {
     const student = new Student(req.body)
@@ -268,7 +275,7 @@ app.put("/studentTest/:id", (req, res) => {
 // Update StudentTest Checkin
 app.put("/studentTestCheckin", (req, res) => {
     const studentTest = new StudentTest(req.body)
-    StudentTest.updateById(studentTest, (err, data) => {
+    StudentTest.updateCheckin(studentTest, (err, data) => {
         if (err) throw err;
         res.json(data);
     })

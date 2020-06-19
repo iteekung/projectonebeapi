@@ -27,6 +27,13 @@ Student.findById = (id, result) => {
     });
 }
 
+Student.findByStudentId = (studentId, result) => {
+    sql.query(`SELECT * FROM ${table} WHERE student_idname = '${studentId}'`, (err, res) => {
+        if(err) throw err
+        result(null,{...res[0]});
+    });
+}
+
 Student.getAll = result => {
     sql.query(`SELECT * FROM ${table} `, (err, res) => {
         if(err) throw err
