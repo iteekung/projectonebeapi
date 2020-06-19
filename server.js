@@ -241,11 +241,6 @@ app.delete("/test/:id", (req, res) => {
 
 
 
-
-
-
-
-
 // StudentTest getall
 app.get("/studentTest", (req, res) => {
     StudentTest.getAll((err, data) => {
@@ -256,14 +251,6 @@ app.get("/studentTest", (req, res) => {
 // StudentTest find by id
 app.get("/studentTest/:id", (req, res) => {
     StudentTest.findById(req.params.id, (err, data) => {
-        if (err) throw err;
-        res.json(data);
-    })
-});
-// Create StudentTest
-app.post("/studentTest", (req, res) => {
-    const studentTest = new StudentTest(req.body)
-    StudentTest.create(studentTest, (err, data) => {
         if (err) throw err;
         res.json(data);
     })
@@ -282,14 +269,6 @@ app.put("/studentTest/:id", (req, res) => {
 app.put("/studentTestCheckin", (req, res) => {
     const studentTest = new StudentTest(req.body)
     StudentTest.updateById(studentTest, (err, data) => {
-        if (err) throw err;
-        res.json(data);
-    })
-});
-
-// Delete StudentTest
-app.delete("/studentTest/:id", (req, res) => {
-    StudentTest.remove(req.params.id, (err, data) => {
         if (err) throw err;
         res.json(data);
     })
